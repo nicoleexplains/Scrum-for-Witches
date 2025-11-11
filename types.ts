@@ -1,4 +1,3 @@
-
 export interface ChecklistItem {
   id: string;
   text: string;
@@ -14,6 +13,7 @@ export interface DailyStandup {
 }
 
 export type TaskStatus = 'backlog' | 'sprint' | 'done';
+export type TaskPriority = 'low' | 'medium' | 'high';
 
 export interface Task {
   id: string;
@@ -22,6 +22,8 @@ export interface Task {
   action: string;
   goal: string;
   status: TaskStatus;
+  priority: TaskPriority;
+  dueDate: string | null;
   definitionOfDone: ChecklistItem[];
   dailyStandups: DailyStandup[];
 }

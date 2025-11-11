@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Sprint } from '../types';
 import { XMarkIcon } from './icons';
@@ -8,6 +7,19 @@ interface RetrospectiveModalProps {
   onClose: () => void;
   onSave: (retrospective: { whatWentWell: string; whatDidntGoWell: string; doDifferently: string; }) => void;
 }
+
+const TextareaField = ({ value, onChange, label, placeholder }: { value: string, onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void, label: string, placeholder: string }) => (
+   <div>
+      <label className="text-lg font-bold font-serif text-purple-300 mb-2 block">{label}</label>
+      <textarea
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={4}
+          className="w-full bg-slate-800 border border-slate-700 rounded-md p-3 text-slate-300 focus:ring-purple-500 focus:border-purple-500"
+      />
+   </div>
+);
 
 const RetrospectiveModal: React.FC<RetrospectiveModalProps> = ({ sprint, onClose, onSave }) => {
   const [whatWentWell, setWhatWentWell] = useState('');
@@ -21,19 +33,6 @@ const RetrospectiveModal: React.FC<RetrospectiveModalProps> = ({ sprint, onClose
     onClose();
   };
   
-  const TextareaField = ({ value, onChange, label, placeholder }: { value: string, onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void, label: string, placeholder: string }) => (
-     <div>
-        <label className="text-lg font-bold font-serif text-purple-300 mb-2 block">{label}</label>
-        <textarea
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            rows={4}
-            className="w-full bg-slate-800 border border-slate-700 rounded-md p-3 text-slate-300 focus:ring-purple-500 focus:border-purple-500"
-        />
-     </div>
-  );
-
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50" onClick={onClose}>
       <div className="bg-slate-900 border border-slate-700 rounded-lg shadow-2xl shadow-purple-950/50 w-full max-w-2xl p-6" onClick={e => e.stopPropagation()}>

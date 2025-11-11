@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
 import { Task, Sprint, Retrospective, TaskStatus } from './types';
@@ -9,9 +8,9 @@ import { PlusIcon, MoonIcon } from './components/icons';
 
 // Initial data for a new user
 const initialTasks: Task[] = [
-    { id: '1', title: 'Master the Tarot', role: 'Diviner', action: 'practice daily one-card pulls', goal: 'build intuition and card knowledge', status: 'backlog', definitionOfDone: [], dailyStandups: [] },
-    { id: '2', title: 'Set Up Ancestor Altar', role: 'Witch', action: 'gather photos, offerings, and a suitable space', goal: 'honor my lineage and connect with ancestors', status: 'backlog', definitionOfDone: [], dailyStandups: [] },
-    { id: '3', title: 'Learn LBRP', role: 'Student of the Occult', action: 'memorize the first two stanzas', goal: 'practice it daily without notes', status: 'backlog', definitionOfDone: [], dailyStandups: [] },
+    { id: '1', title: 'Master the Tarot', role: 'Diviner', action: 'practice daily one-card pulls', goal: 'build intuition and card knowledge', status: 'backlog', priority: 'medium', dueDate: null, definitionOfDone: [], dailyStandups: [] },
+    { id: '2', title: 'Set Up Ancestor Altar', role: 'Witch', action: 'gather photos, offerings, and a suitable space', goal: 'honor my lineage and connect with ancestors', status: 'backlog', priority: 'high', dueDate: null, definitionOfDone: [], dailyStandups: [] },
+    { id: '3', title: 'Learn LBRP', role: 'Student of the Occult', action: 'memorize the first two stanzas', goal: 'practice it daily without notes', status: 'backlog', priority: 'medium', dueDate: null, definitionOfDone: [], dailyStandups: [] },
 ];
 
 const initialSprints: Sprint[] = [];
@@ -40,6 +39,8 @@ const App: React.FC = () => {
             action: '',
             goal: '',
             status: 'backlog',
+            priority: 'medium',
+            dueDate: null,
             definitionOfDone: [],
             dailyStandups: [],
         };
